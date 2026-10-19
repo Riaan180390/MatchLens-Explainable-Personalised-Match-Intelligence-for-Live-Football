@@ -1,0 +1,142 @@
+{
+  "$defs": {
+    "Fact": {
+      "description": "A computed, verifiable number that backs up a narrative claim.",
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Value"
+        },
+        "unit": {
+          "default": "",
+          "title": "Unit",
+          "type": "string"
+        },
+        "context": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Context"
+        }
+      },
+      "required": [
+        "name",
+        "label",
+        "value"
+      ],
+      "title": "Fact",
+      "type": "object"
+    }
+  },
+  "description": "A detected moment worth telling the viewer about, with its evidence.",
+  "properties": {
+    "moment_id": {
+      "title": "Moment Id",
+      "type": "string"
+    },
+    "match_id": {
+      "title": "Match Id",
+      "type": "string"
+    },
+    "seq": {
+      "title": "Seq",
+      "type": "integer"
+    },
+    "elapsed_s": {
+      "title": "Elapsed S",
+      "type": "number"
+    },
+    "minute_label": {
+      "title": "Minute Label",
+      "type": "string"
+    },
+    "kind": {
+      "title": "Kind",
+      "type": "string"
+    },
+    "team_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Team Id"
+    },
+    "player_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Player Id"
+    },
+    "significance": {
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Significance",
+      "type": "number"
+    },
+    "headline": {
+      "title": "Headline",
+      "type": "string"
+    },
+    "facts": {
+      "items": {
+        "$ref": "#/$defs/Fact"
+      },
+      "title": "Facts",
+      "type": "array"
+    },
+    "tags": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Tags",
+      "type": "array"
+    }
+  },
+  "required": [
+    "moment_id",
+    "match_id",
+    "seq",
+    "elapsed_s",
+    "minute_label",
+    "kind",
+    "significance",
+    "headline"
+  ],
+  "title": "Moment",
+  "type": "object"
+}

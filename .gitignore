@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.env
+.env.*
+!.env.example
+node_modules/
+dist/
+.azure/
+data/generated/

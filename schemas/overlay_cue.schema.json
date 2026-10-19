@@ -1,0 +1,111 @@
+{
+  "description": "A timed, machine-readable instruction for a graphics renderer.\n\n`start_s` is in the same timebase as `Event.elapsed_s`, so cues can be\nsynchronised with the feed by whatever renders them.",
+  "properties": {
+    "cue_id": {
+      "title": "Cue Id",
+      "type": "string"
+    },
+    "match_id": {
+      "title": "Match Id",
+      "type": "string"
+    },
+    "moment_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Moment Id"
+    },
+    "template": {
+      "enum": [
+        "score_bug",
+        "player_tag",
+        "moment_card",
+        "stat_bar",
+        "momentum_strip",
+        "lower_third",
+        "recap_card"
+      ],
+      "title": "Template",
+      "type": "string"
+    },
+    "region": {
+      "enum": [
+        "top_left",
+        "top_right",
+        "lower_third",
+        "player_anchor",
+        "full"
+      ],
+      "title": "Region",
+      "type": "string"
+    },
+    "start_s": {
+      "title": "Start S",
+      "type": "number"
+    },
+    "duration_s": {
+      "title": "Duration S",
+      "type": "number"
+    },
+    "priority": {
+      "maximum": 100,
+      "minimum": 0,
+      "title": "Priority",
+      "type": "integer"
+    },
+    "persona": {
+      "default": "all",
+      "title": "Persona",
+      "type": "string"
+    },
+    "locale": {
+      "default": "en",
+      "title": "Locale",
+      "type": "string"
+    },
+    "source": {
+      "default": "fast_path",
+      "enum": [
+        "fast_path",
+        "agent"
+      ],
+      "title": "Source",
+      "type": "string"
+    },
+    "replaces_cue_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Cue this one pre-empts in the same region.",
+      "title": "Replaces Cue Id"
+    },
+    "slots": {
+      "additionalProperties": true,
+      "title": "Slots",
+      "type": "object"
+    }
+  },
+  "required": [
+    "cue_id",
+    "match_id",
+    "template",
+    "region",
+    "start_s",
+    "duration_s",
+    "priority"
+  ],
+  "title": "OverlayCue",
+  "type": "object"
+}

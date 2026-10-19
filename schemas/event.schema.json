@@ -1,0 +1,290 @@
+{
+  "$defs": {
+    "EventType": {
+      "enum": [
+        "match_start",
+        "kick_off",
+        "pass",
+        "carry",
+        "dribble",
+        "shot",
+        "pressure",
+        "tackle",
+        "interception",
+        "ball_recovery",
+        "possession_change",
+        "foul",
+        "card",
+        "set_piece",
+        "sprint",
+        "physical",
+        "substitution",
+        "period_end",
+        "match_end"
+      ],
+      "title": "EventType",
+      "type": "string"
+    }
+  },
+  "description": "One synthetic match event, as it would arrive from a live feed.",
+  "properties": {
+    "match_id": {
+      "title": "Match Id",
+      "type": "string"
+    },
+    "seq": {
+      "title": "Seq",
+      "type": "integer"
+    },
+    "type": {
+      "$ref": "#/$defs/EventType"
+    },
+    "period": {
+      "title": "Period",
+      "type": "integer"
+    },
+    "clock_s": {
+      "description": "Match clock in seconds; period 2 starts at 2700.",
+      "title": "Clock S",
+      "type": "number"
+    },
+    "elapsed_s": {
+      "description": "Seconds of play since kick-off; monotonic, used for replay pacing.",
+      "title": "Elapsed S",
+      "type": "number"
+    },
+    "minute_label": {
+      "title": "Minute Label",
+      "type": "string"
+    },
+    "team_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Team Id"
+    },
+    "player_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Player Id"
+    },
+    "possession_id": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Possession Id"
+    },
+    "possession_team_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Possession Team Id"
+    },
+    "location": {
+      "anyOf": [
+        {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Location"
+    },
+    "end_location": {
+      "anyOf": [
+        {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "End Location"
+    },
+    "outcome": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Outcome"
+    },
+    "subtype": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Subtype"
+    },
+    "recipient_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Recipient Id"
+    },
+    "related_player_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Related Player Id"
+    },
+    "under_pressure": {
+      "default": false,
+      "title": "Under Pressure",
+      "type": "boolean"
+    },
+    "nearest_opponent_m": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Nearest Opponent M"
+    },
+    "opponents_in_lane": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Opponents In Lane"
+    },
+    "ball_speed_kmh": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Ball Speed Kmh"
+    },
+    "player_speed_kmh": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Player Speed Kmh"
+    },
+    "body_part": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Body Part"
+    },
+    "data": {
+      "anyOf": [
+        {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Data"
+    }
+  },
+  "required": [
+    "match_id",
+    "seq",
+    "type",
+    "period",
+    "clock_s",
+    "elapsed_s",
+    "minute_label"
+  ],
+  "title": "Event",
+  "type": "object"
+}

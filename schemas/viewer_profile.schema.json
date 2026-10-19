@@ -1,0 +1,70 @@
+{
+  "properties": {
+    "viewer_id": {
+      "default": "default",
+      "title": "Viewer Id",
+      "type": "string"
+    },
+    "mode": {
+      "default": "casual",
+      "enum": [
+        "casual",
+        "analyst",
+        "player_focus"
+      ],
+      "title": "Mode",
+      "type": "string"
+    },
+    "locale": {
+      "default": "en",
+      "title": "Locale",
+      "type": "string"
+    },
+    "favourite_team_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Favourite Team Id"
+    },
+    "favourite_player_ids": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Favourite Player Ids",
+      "type": "array"
+    },
+    "focus_player_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Focus Player Id"
+    },
+    "focus_metric": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Focus Metric"
+    }
+  },
+  "title": "ViewerProfile",
+  "type": "object"
+}
